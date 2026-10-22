@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.volcanicmg.mapcolonies.mixin",
+  "plugin": "com.volcanicmg.mapcolonies.client.xaero.XaeroMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MinimapRegistryMixin",
+    "WorldMapRegistryMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
