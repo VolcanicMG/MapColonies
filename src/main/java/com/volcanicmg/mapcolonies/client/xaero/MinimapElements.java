@@ -45,6 +45,7 @@ public final class MinimapElements {
     static final class Context {
         List<Marker> markers = List.of();
         int next;
+        final MarkerPainter.Batch batch = new MarkerPainter.Batch();
     }
 
     static final class Renderer extends MinimapElementRenderer<Marker, Context> {
@@ -63,6 +64,7 @@ public final class MinimapElements {
         @Override
         public void postRender(MinimapElementRenderInfo info, MultiBufferSource.BufferSource buffers,
                                MultiTextureRenderTypeRendererProvider renderers) {
+            context.batch.paint(ClientColonies.iconSettings());
         }
 
         @Override
@@ -78,7 +80,7 @@ public final class MinimapElements {
             pose.translate(partialX, partialY, depth);
             float scale = BASE_SCALE * optionalScale * s.scale();
             pose.scale(scale, scale, 1);
-            MarkerPainter.draw(g, m, s.labelMini() == Config.LabelMode.ALWAYS, s);
+            context.batch.add(g, m, s.labelMini() == Config.LabelMode.ALWAYS);
             pose.popPose();
             return false;
         }

@@ -40,6 +40,7 @@ public final class WorldMapElements {
     static final class Context {
         List<Marker> markers = List.of();
         int next;
+        final MarkerPainter.Batch batch = new MarkerPainter.Batch();
     }
 
     static final class Renderer extends ElementRenderer<Marker, Context, Renderer> {
@@ -57,6 +58,7 @@ public final class WorldMapElements {
         @Override
         public void postRender(ElementRenderInfo info, MultiBufferSource.BufferSource buffers,
                                MultiTextureRenderTypeRendererProvider renderers, boolean shadow) {
+            context.batch.paint(ClientColonies.iconSettings());
         }
 
         @Override
@@ -82,7 +84,7 @@ public final class WorldMapElements {
             pose.translate(partialX, partialY, depth);
             float scale = BASE_SCALE * s.scale();
             pose.scale(scale, scale, 1);
-            MarkerPainter.draw(g, m, label, s);
+            context.batch.add(g, m, label);
             pose.popPose();
             return false;
         }

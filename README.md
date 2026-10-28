@@ -101,7 +101,7 @@ mkdir -p libs   # copy the exact pack jars listed in build.gradle into libs/ (gi
 JAVA_HOME=/path/to/jdk-21 ./gradlew build
 ```
 
-The jar lands in `build/libs/mapcolonies-1.0.0.jar`. The pack jars are `compileOnly`, so any API mismatch with
+The jar lands in `build/libs/mapcolonies-1.0.1.jar`. The pack jars are `compileOnly`, so any API mismatch with
 those exact versions fails the build. `./gradlew runServer` starts a dev server with the MineColonies stack (no
 Xaero).
 

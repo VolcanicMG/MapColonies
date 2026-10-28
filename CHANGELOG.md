@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 — 2026-10-28
+
+- Performance: hut icons and labels are drawn in two batches per map per frame instead of two flushes per hut
+  (spark: ~3% of the client render thread before, with icons on). No visual or config changes; where huts
+  overlap, labels now always sit above neighbouring badges.
+
 ## 1.0.0 — 2026-10-21
 
 First release of MapColonies.
